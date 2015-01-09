@@ -1,0 +1,8 @@
+datos3<-read.csv("household_power_consumption.txt", na.strings=c("NA", "-", "?"))
+library(dplyr)
+datos3$Date <- as.Date(datos3$Date,"%d/%m/%Y")
+png(file = "plot1.png") 
+datosplot <- filter(datos3, Date == "2007-02-01" | Date == "2007-02-02")
+library(graphics)
+hist(datosplot$Global_active_power, col=2, main = "Global Active Power", xlab = "Global Active Power(kilowatts)")
+dev.off()
